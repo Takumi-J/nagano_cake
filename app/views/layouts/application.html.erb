@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://kit.fontawesome.com/c3313db431.js" crossorigin="anonymous"></script>
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +11,48 @@
   </head>
 
   <body>
+    
+    <header>
+      <li>
+        <%= link_to "/", method: :get do %>
+         ※ロゴ画像
+        <% end %>
+      </li>
+      
+    <% if customer_signed_in? %>
+    <!--マイページ、商品一覧、カート、ログアウト-->
+       <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+       <%= link_to "/about", method: :get do %>
+        About
+       <% end %>
+      </li>
+      
+      <li>
+       <%= link_to "/items", method: :get do %>
+        商品一覧
+       <% end %>
+      </li>
+      
+      <li>
+       <%= link_to "/customers/sign_up", method: :get do %>
+        新規登録
+       <% end %>
+      </li>
+      
+      <li>
+       <%= link_to "/customers/sign_in", method: :get do %>
+        ログイン
+       <% end %>
+      </li>
+      
+      <% end %>
+      
+    </header>
+    
     <%= yield %>
   </body>
 </html>
