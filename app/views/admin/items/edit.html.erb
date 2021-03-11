@@ -1,0 +1,40 @@
+<h2>商品編集</h2>
+
+<%= form_with model: @item,url: admin_item_path(@item.id),local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :商品画像 %>
+    <%= f.attachment_field :image%>
+  </div>
+
+  <div class="field">
+    <%= f.label :商品名 %>
+    <%= f.text_field :name, :placeholder => "商品名", autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :商品説明 %>
+    <%= f.text_field :introduction, :placeholder => "ここに説明文を記述します" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ジャンル %>
+    <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, { include_blank: '選択してください'}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :税抜価格 %>
+    <%= f.text_field :price, :placeholder => "1000円" %>円
+  </div>
+
+  <div class="field">
+    <%= f.label :販売ステータス %>
+    <%= f.radio_button :is_active, "true" %>販売中
+　　<%= f.radio_button :is_active, "東京" %>販売停止中
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+
+<% end %>

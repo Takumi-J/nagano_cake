@@ -11,48 +11,72 @@
   </head>
 
   <body>
-    
     <header>
+   <% if admin_signed_in? %>
+   <!--商品⼀覧 会員⼀覧 注⽂履歴⼀覧 ジャンル⼀覧 ログアウト-->
+   
       <li>
+        <%= link_to "商品一覧", admin_items_path, method: :get %>
+      </li>
+      
+       <li>
+        <%= link_to "ジャンル一覧", admin_genres_path, method: :get %>
+      </li>
+
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+      
+    <% elsif customer_signed_in?  %>
+      <!--マイページ、商品一覧、カート、ログアウト-->
+       <li>
         <%= link_to "/", method: :get do %>
          ※ロゴ画像
         <% end %>
-      </li>
-      
-    <% if customer_signed_in? %>
-    <!--マイページ、商品一覧、カート、ログアウト-->
+       </li>
+       
        <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-       <%= link_to "/about", method: :get do %>
-        About
-       <% end %>
-      </li>
+         <%= link_to "マイページ", customers_mypage_path, method: :get %>
+       </li>
+       
+       <li>
+         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+       </li>
+       
+     <% else %>
       
-      <li>
+       <li>
+        <%= link_to "/", method: :get do %>
+         ※ロゴ画像
+        <% end %>
+       </li>
+       
+       <li>
+        <%= link_to "/about", method: :get do %>
+         About
+        <% end %>
+       </li>
+      
+       <li>
        <%= link_to "/items", method: :get do %>
         商品一覧
        <% end %>
-      </li>
+       </li>
       
-      <li>
-       <%= link_to "/customers/sign_up", method: :get do %>
+       <li>
+        <%= link_to "/customers/sign_up", method: :get do %>
         新規登録
-       <% end %>
-      </li>
+        <% end %>
+       </li>
       
-      <li>
-       <%= link_to "/customers/sign_in", method: :get do %>
+       <li>
+        <%= link_to "/customers/sign_in", method: :get do %>
         ログイン
-       <% end %>
-      </li>
-      
-      <% end %>
-      
-    </header>
+        <% end %>
+       </li>
     
+    <% end %>
+      
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,35 @@
+<h2>商品詳細</h2>
+
+  <%= attachment_image_tag @item, :image %>
+
+<table>
+  <tr>
+    <th>商品名</th>
+  　<td><%=@item.name%></td>
+  </tr>
+  <tr>
+    <th>商品説明</th>
+  　<td><%=@item.introduction%></td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+  　<td><%=@item.genre.name%></td>
+  </tr>
+  <tr>
+    <th>税込価格<br>（税込価格）</th>
+    <td><%=@item.price*1.1%>(<%=@item.price%>)</td>
+  </tr>
+  <tr>
+    <th>販売ステータス</th>
+    <td>
+    <%if @item.is_active%>
+      販売中
+    <%else%>
+      販売停止中
+    <%end%>
+    </td>
+  </tr>
+</table>
+
+  <%= link_to("/admin/items/#{@item.id}/edit") do %><button type="button">編集する</button>
+  <%end%>
