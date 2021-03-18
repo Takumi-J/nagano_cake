@@ -48,7 +48,7 @@
     </td>
     
 
-    <td><%= link_to("/addresses/#{address_ex.id}",method: :delete) do %>
+    <td><%= link_to("/addresses/#{address_ex.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>
     <button type="button">削除する</button>
     <%end%>
     </td>

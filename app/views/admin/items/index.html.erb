@@ -29,7 +29,8 @@
       販売停止中
     <%end%></td>
     <td>
-     <%= link_to("/admin/items/#{item.id}",method: :delete) do %><button type="button">削除する</button>
+     <%= link_to("/admin/items/#{item.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>
+     <button type="button">削除する</button>
      <%end%>
     </td>
   <% end %>

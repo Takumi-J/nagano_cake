@@ -12,11 +12,22 @@
 
   <body>
     <header>
+    <% if flash[:notice] %>
+    <%= flash[:notice] %>
+    <% end %>
+        
    <% if admin_signed_in? %>
-   <!--商品⼀覧 会員⼀覧 注⽂履歴⼀覧 ジャンル⼀覧 ログアウト-->
    
       <li>
         <%= link_to "商品一覧", admin_items_path, method: :get %>
+      </li>
+      
+      <li>
+        <%= link_to "会員一覧", admin_customers_path, method: :get %>
+      </li>
+      
+      <li>
+        <%= link_to "注文履歴一覧", admin_path, method: :get %>
       </li>
       
        <li>
@@ -28,7 +39,8 @@
       </li>
       
     <% elsif customer_signed_in?  %>
-      <!--マイページ、商品一覧、カート、ログアウト-->
+      <p>ようこそ、<%=current_customer.last_name%><%=current_customer.first_name%>さん！</p>
+      
        <li>
         <%= link_to "/", method: :get do %>
          ※ロゴ画像
@@ -37,6 +49,14 @@
        
        <li>
          <%= link_to "マイページ", customers_mypage_path, method: :get %>
+       </li>
+       
+       <li>
+         <%= link_to "商品一覧", "/items", method: :get %>
+       </li>
+       
+       <li>
+         <%= link_to "カート", cart_items_path, method: :get %>
        </li>
        
        <li>
@@ -58,9 +78,7 @@
        </li>
       
        <li>
-       <%= link_to "/items", method: :get do %>
-        商品一覧
-       <% end %>
+         <%= link_to "商品一覧", "/items", method: :get %>
        </li>
       
        <li>

@@ -1,0 +1,13 @@
+<h2>ジャンル編集</h2>
+
+<%= form_with model: @genre, url:admin_genre_path ,local:true do |f| %>
+
+  <div class="field">
+    <%= f.label :ジャンル名 %>
+    <%= f.text_field :name,:placeholder => "ジャンル名", autofocus: true %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "変更内容を保存" %>
+  </div>
+<% end %>
