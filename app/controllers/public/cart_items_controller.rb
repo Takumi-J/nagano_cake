@@ -10,11 +10,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @ca = CartItem.find(params[:id])
-    if @cart_item.update(cart_item_params)
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(amount: params[:cart_item][:amount])
       flash[:notice]="変更しました"
     end
-    
+
     redirect_to cart_items_path
   end
 
