@@ -1,9 +1,23 @@
+<div class = "centers">
 <h3>本当に退会しますか？</h3>
 <p>退会すると、会員登録情報や<br>
 これまでの購⼊履歴が閲覧できなくなります。<br>
 退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= button_to "退会しない",customers_mypage_path(@customer), method: :get %>
 
-<%= button_to "退会する",customers_delete_path(@customer), method: :patch  %>
+<div class="row">
+ <div class = "col-md-2 offset-md-4">
+<div class = "inlines">
+<%= button_to "退会しない",customers_mypage_path(@customer), method: :get, class: 'btn btn-primary' %>
+</div>
+</div>
 
+
+ <div class = "col-md-2 offset-md-0.5">
+<div class = "inlines">
+<%= button_to "退会する",customers_delete_path(@customer), method: :patch, class: 'btn btn-danger'  %>
+</div>
+</div>
+</div>
+
+</div>

@@ -1,11 +1,27 @@
-<h2>ショッピンングカート</h2>
+<div class="row">
+ <div class = "col-md-5">
 
-  <%= link_to("/cart_items/delete",method: :delete, data: {confirm: "カートを空にして本当によろしいですか？"} ) do %>
-  <button type="button">カートを空にする</button>
-  <%end%>
+<div class = "inlines">
+  <div class="sub-ti">
+   <h2>ショッピンングカート</h2>
+  </div>
+</div>
+
+</div>
+
+<div class = "col-md-2 offset-md-5">
+
+  <div class = "inlines">
+    <%= link_to("/cart_items/delete",method: :delete, data: {confirm: "カートを空にして本当によろしいですか？"} ) do %>
+    <button type="button" class="btn btn-danger">カートを空にする</button>
+    <%end%>
+  </div>
+
+</div>
+</div>
 
 
-<table class="table table-striped">
+<table class="yoko_table">
   <thead>
     <tr>
       <th>商品名</th>
@@ -24,18 +40,16 @@
         <td><%= cart_item.item.price%></td>
 
         <td>
-          <%= cart_item.amount %>
-
           <%= form_with model: cart_item, url: cart_item_path(cart_item)  do |f| %>
 
           <%= f.select(:amount,[[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15],[16],[17],[18],[19],[20]], { include_blank: '個数選択'})%>
-          <%= f.submit "個数変更" %>
+          <%= f.submit('変更',class: 'btn btn-success') %>
           <%end%>
         </td>
 
         <td><%= cart_item.amount*cart_item.item.price%></td>
         <td><%= link_to("/cart_items/#{cart_item.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>
-        <button type="button">削除する</button>
+        <button type="button" class="btn btn-danger">削除する</button>
         <%end%>
         </td>
       </tr>
@@ -44,14 +58,36 @@
 </table>
 
 
-<table>
+<div class="row">
+ <div class = "col-md-3">
+
+<div class="flex">
+ <div class = "inlines">
+  <%= link_to root_path do %><button type="button" class="btn btn-primary">買い物を続ける</button><%end%>
+ </div>
+
+ </div>
+</div>
+
+<div class = "col-md-2 offset-md-7">
+
+<div class = "inlines sum">
+<table class = "tate_table inlines">
   <tr>
     <th>合計</th>
     <td><%= @sum %></td>
   </tr>
 </table>
+</div>
+</div>
 
+  </div>
+</div>
 
-<%= link_to items_path do %><button type="button">買い物を続ける</button><%end%>
+<br>
+<br>
 
-<%= link_to new_order_path do %><button type="button">情報入力に進む</button><%end%>
+<div class = "centers">
+<%= link_to new_order_path do %><button type="button" class="btn btn-success">情報入力に進む</button><%end%>
+</div>
+

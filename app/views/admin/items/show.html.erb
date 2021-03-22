@@ -1,12 +1,28 @@
+<div class="row">
+ <div class = "col-md-5">
+   <div class="sub-ti">
 <h2>商品詳細</h2>
+   </div>
+  </div>
+</div>
 
-  <%= attachment_image_tag @item, :image %>
+<br>
+<br>
+<br>
 
-<table>
+<div class="row">
+ <div class = "col-md-7">
+    <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+ </div>
+
+ <div class = "col-md-5">
+<table class="nomal-table">
   <tr>
     <th>商品名</th>
   　<td><%=@item.name%></td>
   </tr>
+  
+  <br>
   <tr>
     <th>商品説明</th>
   　<td><%=@item.introduction%></td>
@@ -17,19 +33,26 @@
   </tr>
   <tr>
     <th>税込価格<br>（税込価格）</th>
-    <td><%=@item.price*1.1%>(<%=@item.price%>)</td>
+    <td><%=@sum.round%>(<%=@item.price.round%>)円</td>
   </tr>
   <tr>
     <th>販売ステータス</th>
     <td>
     <%if @item.is_active%>
-      販売中
+      <div class="text-success">販売中</div>
     <%else%>
-      販売停止中
+      <div class="text-secondary">販売停止中</div>
     <%end%>
     </td>
   </tr>
 </table>
+</div>
 
-  <%= link_to("/admin/items/#{@item.id}/edit") do %><button type="button">編集する</button>
+</div>
+
+<br>
+
+<div class="centers">
+  <%= link_to("/admin/items/#{@item.id}/edit") do %><button type="button" class="btn btn-success">編集する</button>
   <%end%>
+</div>

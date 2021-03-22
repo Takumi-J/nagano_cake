@@ -1,43 +1,67 @@
-<h1>マイページ</h1>
-<h1>登録情報</h1>
-<%=link_to"編集する",customers_edit_path %>
+<div class="row">
+ <div class = "col-md-5">
+   <div class="sub-ti">
+<h3>マイページ</h3>
+   </div>
+  </div>
+</div>
 
-<table class="table table-bordered">
+
+<table class = "nomal-table">
+  <tr>
+    <th>登録情報</th>
+    <td><%= link_to customers_edit_path do %><button type="button" class="btn btn-success">編集する</button><%end%></td>
+  </tr>
+</table>
+
+<div class="row">
+ <div class = "col-md-6">
+<table class="tate_table">
     <tbody>
        <tr>
-         <td>氏名</td>
+         <th>氏名</th>
          <td><%= current_customer.last_name%> <%=current_customer.first_name%></td>
        </tr>
        
        <tr>
-         <td>カナ</td>
+         <th>カナ</th>
          <td><%= current_customer.last_name_kana%> <%=current_customer.first_name_kana%></td>
        </tr>
        
        <tr>
-         <td>郵便番号</td>
+         <th>郵便番号</th>
          <td><%= current_customer.postal_code%></td>
        </tr>
        
        <tr>
-         <td>住所</td>
+         <th>住所</th>
          <td><%= current_customer.address%></td>
        </tr>
        
        <tr>
-         <td>電話番号</td>
+         <th>電話番号</th>
          <td><%= current_customer.telephone_number%></td>
        </tr>
        
        <tr>
-         <td>メールアドレス</td>
+         <th>メールアドレス</th>
          <td><%= current_customer.email%></td>
        </tr>
     </tbody>
 </table>
 
-<h3>配送先</h3>
-<%=link_to"一覧を見る","/addresses"%>
+  </div>
+</div>
 
-<h3>注文履歴</h3>
-<%=link_to"一覧を見る","/orders"%>
+<table class = "nomal-table">
+  <tr>
+    <th>配送先</th>
+    <td><%= link_to "/addresses" do %><button type="button" class="btn btn-primary">一覧を見る</button><%end%></td>
+  </tr>
+
+  <tr>
+    <th>注文履歴</th>
+    <td><%= link_to "/orders" do %><button type="button" class="btn btn-primary">一覧を見る</button><%end%></td>
+  </tr>
+</table>
+

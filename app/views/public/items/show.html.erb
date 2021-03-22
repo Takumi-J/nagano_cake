@@ -1,32 +1,41 @@
-<h2>商品詳細</h2>
+<div class="row">
+ <div class = "col-md-6">
+    <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+ </div>
 
-  <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+ <div class = "col-md-6">
 
-<table>
-  <tr>
     <!--商品名（ジャンル）という形での表示-->
-   <td><%=@item.name%> (<%=@item.genre.name%>)</td>
-  </tr>
-
-  <tr>
-    <!--商品説明-->
-  <td><%=@item.introduction%></td>
-  </tr>
-
-  <tr>
-    <td>￥<%=@item.price*1.1%>(税込)</td>
-  </tr>
-
-
-    <tr>
-     <td>
+   <h4><%=@item.name%> (<%=@item.genre.name%>)</h4>
+  
+  <%=@item.introduction%><br>
+    <div class = "inlines">
+    <h4>￥<%=@item.price*1.1.round%></h4>
+    </div>
+    
+    <div class = "inlines">
+    <p>(税込)</p>
+    </div>
+    
        <%= form_with model: @cart_item, url: item_cart_items_path(@item),local: true do |f| %>
        <%= f.select(:amount,[[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15],[16],[17],[18],[19],[20]], { include_blank: '個数選択'})%>
-       <%= f.submit "カートに入れる" %>
+       <%= f.submit('カートに入れる',class: 'btn btn-success') %>
        <%end%>
-     </td>
-    </tr>
+
+
+ </div>
+
+
+</div>
 
 
 
-</table>
+
+
+
+
+
+
+
+
+

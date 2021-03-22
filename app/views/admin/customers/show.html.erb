@@ -1,6 +1,16 @@
-<h2><%=@customer.last_name%><%=@customer.first_name%>さんの会員詳細</h2>
+<div class="row">
+ <div class = "col-md-5">
+   <div class="sub-ti">
+<h3><%=@customer.last_name%><%=@customer.first_name%>さんの会員詳細</h3>
+   </div>
+  </div>
+</div>
 
-<table>
+<br>
+
+<div class="row">
+ <div class = "col-md-4 offset-md-1">
+<table class="nomal-table">
   <tr>
     <th>会員ID</th>
   　<td><%=@customer.id%></td>
@@ -13,22 +23,22 @@
     <th>フリガナ</th>
   　<td><%=@customer.last_name_kana%>  <%=@customer.first_name_kana%></td>
   </tr>
-  
+
   <tr>
     <th>郵便番号</th>
   　<td><%=@customer.postal_code%></td>
   </tr>
-  
+
   <tr>
     <th>住所</th>
   　<td><%=@customer.address%></td>
   </tr>
-  
+
   <tr>
     <th>電話番号</th>
   　<td><%=@customer.telephone_number%></td>
   </tr>
-  
+
   <tr>
     <th>メールアドレス</th>
   　<td><%=@customer.email%></td>
@@ -37,14 +47,28 @@
   <th>会員ステータス</th>
     <td>
     <%if @customer.is_deleted%>
-    退会
+    <div class="text-secondary">退会</div>
     <%else%>
-    有効
+    <div class="text-success">有効</div>
     <%end%>
     </td>
   </tr>
 </table>
 
-  <%= link_to("/admin/customers/#{@customer.id}/edit") do %><button type="button">編集する</button><%end%>
+</div>
+</div>
+
+<br>
+
+<div class="row">
   
-  <%= link_to admin_path do %><button type="button">注文履歴一覧を見る</button><%end%>
+ <div class = "col-md-2 offset-md-1">
+  <%= link_to("/admin/customers/#{@customer.id}/edit") do %><button type="button" class="btn btn-success">編集する</button><%end%>
+ </div>
+
+ <div class = "col-md-3 offset-md-1">
+  <%= link_to admin_path(c: @customer) do %><button type="button" class="btn btn-primary">注文履歴一覧を見る</button><%end%>
+ </div>
+  
+  </div>
+</div>

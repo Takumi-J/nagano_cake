@@ -2,12 +2,23 @@
 
 <%= form_with model: @genre, url:admin_genre_path ,local:true do |f| %>
 
+<div class="row">
+ <div class = "col-md-5">
+<table class="nomal-table">
   <div class="field">
-    <%= f.label :ジャンル名 %>
-    <%= f.text_field :name,:placeholder => "ジャンル名", autofocus: true %>
+    <tr>
+    <th><%= f.label :ジャンル名 %></th>
+    <td><%= f.text_field :name,:placeholder => "ジャンル名", autofocus: true %></td>
+    </tr>
   </div>
-  
-  <div class="actions">
-    <%= f.submit "変更内容を保存" %>
-  </div>
+</table>
+</div>
+
+<div class = "col-md-2">
+ <div class="actions">
+  <%= f.submit('変更内容を保存',class: 'btn btn-success') %>
+ </div>
+</div>
+
+</div>
 <% end %>

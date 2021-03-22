@@ -1,8 +1,20 @@
-<h2>商品一覧</h2>
+<div class="row">
+ <div class = "col-md-5">
+  <div class="sub-ti">
+   <h2>商品一覧</h2>
+  </div>
+ </div>
+  
+ <div class = "col-md-1 offset-md-6">
+  <%= link_to new_admin_item_path, method: :get do %>
+  <%= image_tag 'shinki.png',:size => '70x60'%>
+  <% end %>
+ </div>
+  
+</div>
 
- <%= link_to new_admin_item_path, method: :get do %>
-  新規作成（※アイコンで表示）
- <% end %>
+
+
 
 <table class="table">
 
@@ -12,8 +24,7 @@
     <th>税抜価格</th>
     <th>ジャンル</th>
     <th>ステータス</th>
-    <th></th>
-    <th colspan="6"></th>
+    <!--<th></th>-->
   </tr>
 
   <% @items.each do|item| %>
@@ -24,17 +35,23 @@
     <td><%=item.genre.name%></td>
     <td>
      <%if item.is_active%>
-      販売中
+     <div class="text-success">販売中</div>
     <%else%>
-      販売停止中
+    <div class="text-secondary">販売停止中</div>
     <%end%></td>
-    <td>
-     <%= link_to("/admin/items/#{item.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>
-     <button type="button">削除する</button>
-     <%end%>
-    </td>
+    <!--<td>-->
+     <!--%= link_to("/admin/items/#{item.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>-->
+     <!--<button type="button">削除する</button>-->
+     <!--%end%>-->
+    <!--</td>-->
   <% end %>
   
   
   </table>
-  <%= paginate @items %>
+  
+  
+ <div class="row">
+  <div class = "col-md-2 offset-md-5">
+   <%= paginate @items %>
+  </div>
+ </div>

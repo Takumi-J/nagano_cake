@@ -1,0 +1,112 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+// .container{
+  // width:90%;
+  // margin:auto;
+// }
+
+
+.sub-ti{
+  font-weight:bold;
+  background: #eee;
+  text-align:center;
+  margin-left:100px;
+}
+
+.navbar-nav li {
+  margin:30px;
+}
+
+.jumbotron {
+  background:url(bg_img.jpeg) center no-repeat;
+  background-size: cover;
+  text-align:center;
+  font-weight:bold;
+}
+
+.text-box {
+  width:500px;
+  background:white;
+  text-align:center;
+}
+
+.about {
+  text-align:center;
+}
+
+.inlines{
+  display: inline-block;
+}
+
+.flex{
+  display:flex;
+}
+
+.yoko_table{
+  box-sizing: border-box;
+  border-collapse:collapse;
+  margin:25px auto;
+  width: 100%;
+}
+
+.yoko_table th,
+.yoko_table td{
+  border: 1px solid #999;
+  padding: .5em 1em;
+}
+
+.yoko_table th{
+  background: #eee;
+}
+
+.tate_table{
+  box-sizing: border-box;
+  border-collapse:collapse;
+  margin:25px auto;
+  width: 100%;
+}
+
+.tate_table th,
+.tate_table td{
+  border: 1px solid #999;
+  padding: .5em 1em;
+}
+
+.tate_table th{
+  background: #eee;
+}
+
+.centers{
+  text-align: center;
+  margin:0px auto;
+}
+
+.nomal-table th{
+  padding-right:80px;
+}
+
+.item-new-table{
+  padding-right:80px;
+  text-align:left;
+  margin:0px auto;
+}
+
+.item-new-table th{
+  padding-right:80px;
+}
+

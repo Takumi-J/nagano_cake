@@ -11,90 +11,96 @@
   </head>
 
   <body>
-    <header>
-    <% if flash[:notice] %>
-    <%= flash[:notice] %>
-    <% end %>
-        
+
+<header>
+
+ <nav class="navbar navbar-expand-sm  mt-3 mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "/", method: :get do %>
+    <i class="navbar-brand"></i><%= image_tag 'logo.png',:size => '150x80'%>
+  <% end %>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+
    <% if admin_signed_in? %>
-   
-      <li>
+
+      <li class="nav-item">
         <%= link_to "商品一覧", admin_items_path, method: :get %>
       </li>
-      
-      <li>
+
+      <li class="nav-item">
         <%= link_to "会員一覧", admin_customers_path, method: :get %>
       </li>
-      
-      <li>
+
+      <li class="nav-item">
         <%= link_to "注文履歴一覧", admin_path, method: :get %>
       </li>
-      
-       <li>
+
+       <li class="nav-item">
         <%= link_to "ジャンル一覧", admin_genres_path, method: :get %>
       </li>
 
-      <li>
+      <li class="nav-item">
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
-      
+
     <% elsif customer_signed_in?  %>
       <p>ようこそ、<%=current_customer.last_name%><%=current_customer.first_name%>さん！</p>
-      
-       <li>
-        <%= link_to "/", method: :get do %>
-         ※ロゴ画像
-        <% end %>
-       </li>
-       
-       <li>
+
+       <li class="nav-item">
          <%= link_to "マイページ", customers_mypage_path, method: :get %>
        </li>
-       
-       <li>
+
+       <li class="nav-item">
          <%= link_to "商品一覧", "/items", method: :get %>
        </li>
-       
-       <li>
+
+       <li class="nav-item">
          <%= link_to "カート", cart_items_path, method: :get %>
        </li>
-       
-       <li>
+
+       <li class="nav-item">
          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
        </li>
-       
+
      <% else %>
-      
-       <li>
-        <%= link_to "/", method: :get do %>
-         ※ロゴ画像
-        <% end %>
-       </li>
-       
-       <li>
+
+
+       <li class="nav-item">
         <%= link_to "/about", method: :get do %>
          About
         <% end %>
        </li>
-      
-       <li>
+
+       <li class="nav-item">
          <%= link_to "商品一覧", "/items", method: :get %>
        </li>
-      
-       <li>
+
+       <li class="nav-item">
         <%= link_to "/customers/sign_up", method: :get do %>
         新規登録
         <% end %>
        </li>
-      
-       <li>
+
+       <li class="nav-item">
         <%= link_to "/customers/sign_in", method: :get do %>
         ログイン
         <% end %>
-       </li>
-    
-    <% end %>
-      
-    <%= yield %>
+        </li>
+   <% end %>
+        </ul>
+      </div>
+    </nav>
+</header>
+
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+
+ <div class="container">
+     <%= yield %>
+ </div>
   </body>
 </html>

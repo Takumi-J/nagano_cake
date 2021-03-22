@@ -2,6 +2,7 @@ class Admin::OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
+    @sum = ( @order.total_payment - @order.shipping_cost ) / 1.1 
   end
   
   def update

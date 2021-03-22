@@ -1,36 +1,51 @@
+<div class="row">
+ <div class = "col-md-5">
+   <div class="sub-ti">
 <h3>配送先登録/一覧</h3>
+   </div>
+  </div>
+</div>
+
+<br>
 
 <%= form_with model: @address, local:true do |f| %>
-
+<table class = "nomal-table">
   <div class="field">
-    <%= f.label :郵便番号（ハイフンなし） %>
-    <%= f.text_field :postal_code,:placeholder => "0000000", autofocus: true %>
-  </div>
+  <tr>
+    <th><%= f.label :郵便番号（ハイフンなし） %></th>
+    <td><%= f.text_field :postal_code,:placeholder => "0000000", autofocus: true %></td>
+  </tr>
   
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address,:placeholder => "東京都渋⾕区代々⽊神園町0-0" %>
-  </div>
+  <tr>
+    <th><%= f.label :住所 %></th>
+    <td><%= f.text_field :address,:size=>"60",:placeholder => "東京都渋⾕区代々⽊神園町0-0" %></td>
+  </tr>
   
-  <div class="field">
-    <%= f.label :宛名 %>
-    <%= f.text_field :name,:placeholder => "令和道⼦"%>
-  </div>
+  <tr>
+    <th><%= f.label :宛名 %></th>
+    <td><%= f.text_field :name,:placeholder => "令和道⼦"%>
+    <td>
+    <div class="actions">
+    <%= f.submit('新規登録',class: 'btn btn-success') %>
+    </div>
+    </td>
+  </td>
+  </tr>
   
-  <div class="actions">
-    <%= f.submit "新規登録" %>
   </div>
+</table>
 <% end %>
 
+<br>
+<br>
 
-<table class="table">
+<table class="yoko_table">
   
   <tr>
     <th>郵便番号</th>
     <th>住所</th>
     <th>宛名</th>
     <th></th>
-    <th colspan="4"></th>
   </tr>
   
   <% @addresses.each do|address_ex| %>
@@ -42,15 +57,15 @@
     <td><%=address_ex.name%></td>
     
         
-    <td><%= link_to("/addresses/#{address_ex.id}/edit") do %>
-    <button type="button">編集する</button>
+    <td>
+      <div class="centers">
+        <%= link_to("/addresses/#{address_ex.id}/edit") do %>
+    <button type="button" class="btn btn-success">編集する</button>
     <%end%>
-    </td>
-    
-
-    <td><%= link_to("/addresses/#{address_ex.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>
-    <button type="button">削除する</button>
+    <%= link_to("/addresses/#{address_ex.id}",method: :delete, data: {confirm: "本当に削除しますか？"} ) do %>
+    <button type="button" class="btn btn-danger">削除する</button>
     <%end%>
+    </div>
     </td>
 
    </tr>

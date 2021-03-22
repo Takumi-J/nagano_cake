@@ -1,14 +1,21 @@
-<h2>注文情報確認</h2>
+<div class="row">
+ <div class = "col-md-5">
+   <div class="sub-ti">
+     <h2>注文情報確認</h2>
+   </div>
+  </div>
+</div>
 
-
-<table class="table table-striped">
+<div class="row">
+  <div class = "col-md-7">
+<table class="yoko_table">
+  
   <thead>
     <tr>
       <th>商品名</th>
       <th>単価（税込）</th>
       <th>数量</th>
       <th>小計</th>
-      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -23,9 +30,12 @@
     <% end %>
   </tbody>
 </table>
+ </div>
+ 
+ <div class = "col-md-4 offset-md-1">
 
 <%= form_with model: @order, url: orders_complete_path,method: :patch,local: true do |f| %>
-<table>
+<table class = "tate_table">
   <tr>
     <th>送料</th>
     <td><%=@order.shipping_cost%></td>
@@ -39,17 +49,19 @@
 
   <tr>
     <th>請求金額</th>
-    <td><%= @sum * 1.1 + @order.shipping_cost %></td>
+    <td><%= @sum_all.floor%></td>
     <%= f.hidden_field :total_payment, value: @sum * 1.1 + @order.shipping_cost %>
   </tr>
 </table>
+ </div>
+</div>
 
 
-<table>
+<table class = "nomal-table">
   <tr>
     <th>支払方法</th>
     <td>
-      <%if @order.payment_method == 0%>
+      <%if @order.payment_method == "クレジットカード"%>
       クレジットカード
       <% else %>
       銀行振込
@@ -68,8 +80,10 @@
 
 </table>
 
+<div class = "centers">
   <div class="actions">
-    <%= f.submit "注文を確定する" %>
+    <%= f.submit('注文を確定する',class: 'btn btn-success') %>
   </div>
+</div>
 
 <% end %>
